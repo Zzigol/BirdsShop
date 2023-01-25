@@ -10,10 +10,10 @@ namespace BirdsShop.Domain.Entity
     public class Bird
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }        
+        public string? Name { get; set; }
+        public string? Description { get; set; }        
 
-        public float Size { get; set; } // Размер в сантиметрах
+        public double? Size { get; set; } // Размер в сантиметрах
 
         public decimal Price { get; set; }
 

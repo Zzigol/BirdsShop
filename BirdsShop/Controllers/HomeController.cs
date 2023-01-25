@@ -3,23 +3,30 @@ using BirdsShop.Domain.Entity;
 using BirdsShop.Domain.Enum;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-
+using BirdsShop.DAL.Interfaces;
 
 namespace BirdsShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        private readonly IBirdRepository _birdRepository;
+
+        public HomeController(IBirdRepository birdRepository)
         {
-            _logger = logger;
+            _birdRepository = birdRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            Bird bird = new Bird() { Name = "Неразлучник", Species = Species.Medium };
-            return View(bird);
+            var response =await _birdRepository.Select();
+            return View();
         }
 
         public IActionResult Privacy()
