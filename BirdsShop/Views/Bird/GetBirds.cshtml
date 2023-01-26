@@ -1,0 +1,13 @@
+﻿@model List<BirdsShop.Domain.Entity.Bird>
+
+@{
+    ViewBag.Title = "title";
+}
+
+@foreach(var bird in Model)
+{
+    <p>@bird.Name</p>
+    <p>@bird.Description</p>
+    <p>@bird.DataCreate</p>
+    <p>@bird.Price</p>
+}

@@ -18,30 +18,26 @@ namespace BirdsShop.DAL.Repozitories
             _db = db;
         }
 
-        public bool Create(Bird entity)
+        public async Task<bool> Create(Bird entity)
         {
-            throw new NotImplementedException();
+            _db.Bird.AddAsync(entity);
+            await _db.SaveChangesAsync();
+            return true;
         }
 
-        public bool Delete(Bird entity)
+        public async Task<bool> Delete(Bird entity)
         {
-            throw new NotImplementedException();
+            _db.Bird.Remove(entity);
+            await _db.SaveChangesAsync();
+            return true;
         }
 
-        public Bird Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<Bird> Get(int id) => await _db.Bird.FirstOrDefaultAsync(x => x.Id == id);
 
-        public Bird GetByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<Bird>> Select()
-        {
-            return await _db.Bird.ToListAsync();  
-        }
+        public async Task<Bird> GetByName(string name) => await _db.Bird.FirstOrDefaultAsync( x => x.Name == name);
+        
+        public async Task<List<Bird>> Select() => await _db.Bird.ToListAsync(); 
+        
 
         
     }

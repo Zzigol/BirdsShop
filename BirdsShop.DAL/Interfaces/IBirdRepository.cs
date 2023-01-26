@@ -9,7 +9,7 @@ namespace BirdsShop.DAL.Interfaces
 {
     public interface IBirdRepository:IBaseRepository<Bird>
     {
-        Bird GetByName(string name);
+        Task<Bird> GetByName(string name);
 
     }
 }

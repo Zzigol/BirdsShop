@@ -16,16 +16,12 @@ namespace BirdsShop.Controllers
         //    _logger = logger;
         //}
 
-        private readonly IBirdRepository _birdRepository;
+        
 
-        public HomeController(IBirdRepository birdRepository)
-        {
-            _birdRepository = birdRepository;
-        }
+        
 
         public async Task<IActionResult> Index()
-        {
-            var response =await _birdRepository.Select();
+        {            
             return View();
         }
 
