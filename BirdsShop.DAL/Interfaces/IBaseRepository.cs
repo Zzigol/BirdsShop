@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BirdsShop.Domain.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace BirdsShop.DAL.Interfaces
     public interface IBaseRepository<T>
     {
         Task<bool> Create(T entity);
+
+        //Task<bool> Create2(Bird[] Birds);
 
         Task<T> Get(int id);
 

@@ -22,6 +22,7 @@ namespace BirdsShop.Controllers
             var response1 = await _birdRepository.GetByName("Аратинга");
             var response2 = await _birdRepository.Get(5);
             var sinica = new Bird () { Name = "ПТИЦА СИНИЦА", Price = 34, Size = 6, Species = 0, DataCreate = DateTime.Now };
+            
             await _birdRepository.Create(sinica);
             await _birdRepository.Delete(sinica);
             return View(response);

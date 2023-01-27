@@ -25,6 +25,16 @@ namespace BirdsShop.DAL.Repozitories
             return true;
         }
 
+        //public async Task<bool> Create2(Bird[] Birds)
+        //{
+        //    foreach(var bird in Birds) 
+        //    {
+        //        _db.Bird.AddAsync(bird);
+        //    }            
+        //    await _db.SaveChangesAsync();
+        //    return true;
+        //}
+
         public async Task<bool> Delete(Bird entity)
         {
             _db.Bird.Remove(entity);
