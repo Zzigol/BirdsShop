@@ -2,12 +2,16 @@
 using BirdsShop.Domain.Entity;
 using BirdsShop.Domain.Enum;
 using BirdsShop.Domain.Response;
+using BirdsShop.Domain.ViewModels.Bird;
 using BirdsShop.Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BirdsShop.Service.Implementations
 {
@@ -20,7 +24,151 @@ namespace BirdsShop.Service.Implementations
             _birdRepository = birdRepository;
         }
 
-        public async Task<IBaseResponse<IEnumerable<Bird>>> GetBird()
+        public async Task<IBaseResponse<BirdViewModel>> CreateBird(BirdViewModel birdViewModel)
+        {
+            var baseResponse = new BaseResponse<BirdViewModel>();
+            try
+            {
+                var bird = new Bird()
+                {
+                    Name = birdViewModel.Name,                    
+                    Description = birdViewModel.Description,
+                    Size = birdViewModel.Size,
+                    Price = birdViewModel.Price,
+                    DataCreate = DateTime.Now,                    
+                    Species = (SpeciesBirds)Convert.ToInt32(birdViewModel.Species)
+
+                };
+                await _birdRepository.Create(bird);
+                return baseResponse;    
+
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<BirdViewModel>()
+                {
+                    Description = $"[CreateBird] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+
+                };
+            }
+
+        }
+        public async Task<IBaseResponse<bool>> DeleteBird(int id)
+        {
+            var baseResponse = new BaseResponse<bool>() 
+            {
+                Data= true
+            };
+            try
+            {
+                var bird = await _birdRepository.Get(id);
+                if (bird == null) 
+                {
+                    baseResponse.Description = "Попугай не найден";
+                    baseResponse.StatusCode = StatusCode.BirdNotFound;
+                    baseResponse.Data = false;
+                    return baseResponse;
+                }
+                await _birdRepository.Delete(bird);
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Description = $"[DeleteBird] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                    
+                };
+            }
+
+        }
+
+        public async Task<IBaseResponse<Bird>> Edit(int id, BirdViewModel model)
+        {
+            var baseResponse = new BaseResponse<Bird>();
+            try
+            {
+                var bird = await _birdRepository.Get(id);
+                if (bird == null)
+                {
+                    baseResponse.Description = "Попугай не найден";
+                    baseResponse.StatusCode = StatusCode.BirdNotFound;
+                    return baseResponse;
+                }
+                bird.Name = model.Name;
+                bird.Description = model.Description;
+                bird.Size = model.Size;
+                bird.Price = model.Price;
+                bird.DataCreate = DateTime.Now;
+                //bird.Species = (SpeciesBirds)Convert.ToInt32(model.Species);
+                await _birdRepository.Update(bird);
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Bird>()
+                {
+                    Description = $"[Edit] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<Bird>> GetBird(int id) 
+        { 
+            var baseResponse = new BaseResponse<Bird>();
+            try
+            {
+                var bird = await _birdRepository.Get(id);
+                if (bird == null)
+                {
+                    baseResponse.Description = "Попугай не найден";
+                    baseResponse.StatusCode = StatusCode.BirdNotFound;
+                    return baseResponse;
+                }
+                baseResponse.Data = bird;
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Bird>()
+                {
+                    Description = $"[GetBird] : {ex.Message}"
+                };
+            }
+
+        }
+
+        public async Task<IBaseResponse<Bird>> GetBirdByName(string name)
+        {
+            var baseResponse = new BaseResponse<Bird>();
+            try
+            {
+                var bird = await _birdRepository.GetByName(name);
+                if (bird == null)
+                {
+                    baseResponse.Description = "Попугай не найден";
+                    baseResponse.StatusCode = StatusCode.BirdNotFound;
+                    return baseResponse;
+                }
+                baseResponse.Data = bird;
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Bird>()
+                {
+                    Description = $"[GetBirdByName] : {ex.Message}"
+                };
+            }
+
+        }
+        public async Task<IBaseResponse<IEnumerable<Bird>>> GetBirds()
 
         {
             var baseResponse=new BaseResponse<IEnumerable<Bird>>();
@@ -42,7 +190,7 @@ namespace BirdsShop.Service.Implementations
             { 
                 return new BaseResponse<IEnumerable<Bird>>()
                 { 
-                    Description = $"[GetBird] : {ex.Message}"               
+                    Description = $"[GetBirds] : {ex.Message}"               
                 };
             
             }

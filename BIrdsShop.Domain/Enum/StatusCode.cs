@@ -8,6 +8,7 @@ namespace BirdsShop.Domain.Enum
 {
     public enum StatusCode
     {
+        BirdNotFound=0,
         OK=200, 
         InternalServerError=500
 

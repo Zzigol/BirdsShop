@@ -46,9 +46,13 @@ namespace BirdsShop.DAL.Repozitories
 
         public async Task<Bird> GetByName(string name) => await _db.Bird.FirstOrDefaultAsync( x => x.Name == name);
         
-        public async Task<List<Bird>> Select() => await _db.Bird.ToListAsync(); 
-        
+        public async Task<List<Bird>> Select() => await _db.Bird.ToListAsync();
 
-        
+        public async Task<Bird> Update(Bird entity)
+        {
+            _db.Bird.Update(entity);
+            await _db.SaveChangesAsync();  
+            return entity;
+        }
     }
 }
