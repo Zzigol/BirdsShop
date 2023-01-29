@@ -2,6 +2,8 @@ using System;
 using BirdsShop.DAL;
 using BirdsShop.DAL.Interfaces;
 using BirdsShop.DAL.Repozitories;
+using BirdsShop.Service.Implementations;
+using BirdsShop.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IBirdRepository,BirdRepository>();
+builder.Services.AddScoped<IBirdService, BirdService>();
 
 
 var app = builder.Build();

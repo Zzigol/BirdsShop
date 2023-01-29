@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BirdsShop.DAL\BirdsShop.DAL.csproj" />
     <ProjectReference Include="..\BIrdsShop.Domain\BirdsShop.Domain.csproj" />
+    <ProjectReference Include="..\BirdsShop.Service\BirdsShop.Service.csproj" />
   </ItemGroup>
 
 </Project>

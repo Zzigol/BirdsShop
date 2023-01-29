@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BirdsShop.Domain.Enum
 {
-    public enum Species
+    public enum SpeciesBirds
     {
         [Display(Name = "Мелкие виды")]
         Small=0,

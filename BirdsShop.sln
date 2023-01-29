@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdsShop", "BirdsShop\BirdsShop.csproj", "{3EF3D7AB-7BC4-4D8C-8940-20FB1274A465}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BirdsShop", "BirdsShop\BirdsShop.csproj", "{3EF3D7AB-7BC4-4D8C-8940-20FB1274A465}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{BD7BE425-BF9E-4DEB-9F01-9EA965641127}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdsShop.Domain", "BIrdsShop.Domain\BirdsShop.Domain.csproj", "{4871B4BF-84D5-4193-BCE8-B1750E2A3606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BirdsShop.Domain", "BIrdsShop.Domain\BirdsShop.Domain.csproj", "{4871B4BF-84D5-4193-BCE8-B1750E2A3606}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{7BCD49C1-C3DF-46D4-B12B-C46ECB075634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdsShop.DAL", "BirdsShop.DAL\BirdsShop.DAL.csproj", "{1FCD444D-99C9-4254-973C-809474A992DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BirdsShop.DAL", "BirdsShop.DAL\BirdsShop.DAL.csproj", "{1FCD444D-99C9-4254-973C-809474A992DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{D4C8649F-891C-4BCF-AE5A-CAB35C3EAD5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdsShop.Service", "BirdsShop.Service\BirdsShop.Service.csproj", "{B6FA4351-AE0B-45A6-81BB-7724510CB878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,10 @@ Global
 		{1FCD444D-99C9-4254-973C-809474A992DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FCD444D-99C9-4254-973C-809474A992DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FCD444D-99C9-4254-973C-809474A992DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6FA4351-AE0B-45A6-81BB-7724510CB878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6FA4351-AE0B-45A6-81BB-7724510CB878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6FA4351-AE0B-45A6-81BB-7724510CB878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6FA4351-AE0B-45A6-81BB-7724510CB878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4871B4BF-84D5-4193-BCE8-B1750E2A3606} = {BD7BE425-BF9E-4DEB-9F01-9EA965641127}
 		{1FCD444D-99C9-4254-973C-809474A992DB} = {7BCD49C1-C3DF-46D4-B12B-C46ECB075634}
+		{B6FA4351-AE0B-45A6-81BB-7724510CB878} = {D4C8649F-891C-4BCF-AE5A-CAB35C3EAD5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D84CBB62-359B-4344-A595-2DBA82720783}

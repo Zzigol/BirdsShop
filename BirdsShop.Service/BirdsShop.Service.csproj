@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BirdsShop.DAL\BirdsShop.DAL.csproj" />
+    <ProjectReference Include="..\BIrdsShop.Domain\BirdsShop.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
