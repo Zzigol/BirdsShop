@@ -1,4 +1,5 @@
 ﻿using BirdsShop.Domain.Enum;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,7 @@ namespace BirdsShop.Domain.ViewModels.Bird
         public DateTime DataCreate { get; set; }
 
         public string Species { get; set; } //Вид
+
+        public IFormFile Avatar { get; set; }
     }
 }

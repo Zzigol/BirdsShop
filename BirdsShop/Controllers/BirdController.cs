@@ -19,7 +19,7 @@ namespace BirdsShop.Controllers
 
         // GET: BirdController
         [HttpGet]
-        public async Task<ActionResult> GetBirds()
+        public async Task<IActionResult> GetBirds()
         {
             var response = await birdService.GetBirds();
             
@@ -29,19 +29,21 @@ namespace BirdsShop.Controllers
             }
             return RedirectToAction("Error");
         }
+        
+
         [HttpGet]
-        public async Task<ActionResult> GetBird(int id)
+        public async Task<IActionResult> GetBird(int id)
         {
             var response = await birdService.GetBird(id);
             if (response.StatusCode==Domain.Enum.StatusCode.OK) 
             {
-                return View(response);
+                return View(response.Data);
             }
             return RedirectToAction("Error");
         }
 
         [Authorize (Roles ="Admin")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var response = await birdService.DeleteBird(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
@@ -52,8 +54,8 @@ namespace BirdsShop.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Save(int id)
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Save(int id)
         {
             if (id == 0) 
             {
@@ -69,7 +71,7 @@ namespace BirdsShop.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Save(BirdViewModel model)
+        public async Task<IActionResult> Save(BirdViewModel model)
         {
             if (ModelState.IsValid) 
             { 

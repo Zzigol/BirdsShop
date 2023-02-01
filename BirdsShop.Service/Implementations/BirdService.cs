@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -117,9 +118,9 @@ namespace BirdsShop.Service.Implementations
             }
         }
 
-        public async Task<IBaseResponse<Bird>> GetBird(int id) 
+        public async Task<IBaseResponse<BirdViewModel>> GetBird(int id) 
         { 
-            var baseResponse = new BaseResponse<Bird>();
+            var baseResponse = new BaseResponse<BirdViewModel>();
             try
             {
                 var bird = await _birdRepository.Get(id);
@@ -129,20 +130,28 @@ namespace BirdsShop.Service.Implementations
                     baseResponse.StatusCode = StatusCode.BirdNotFound;
                     return baseResponse;
                 }
-                baseResponse.Data = bird;
+                var data = new BirdViewModel()
+                {
+                    DataCreate = bird.DataCreate,
+                    Description = bird.Description,
+                    Species = bird.Species.ToString(),
+                    Size = bird.Size,
+                    Name = bird.Name
+                };
+                baseResponse.StatusCode = StatusCode.OK;
+                baseResponse.Data = data;
                 return baseResponse;
-
             }
             catch (Exception ex)
             {
-                return new BaseResponse<Bird>()
+                return new BaseResponse<BirdViewModel>()
                 {
-                    Description = $"[GetBird] : {ex.Message}"
+                    Description = $"[GetBird] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
                 };
             }
-
         }
-
+        
         public async Task<IBaseResponse<Bird>> GetBirdByName(string name)
         {
             var baseResponse = new BaseResponse<Bird>();

@@ -14,7 +14,7 @@ namespace BirdsShop.Service.Interfaces
         Task<IBaseResponse<IEnumerable<Bird>>> GetBirds();
         Task<IBaseResponse<BirdViewModel>> CreateBird(BirdViewModel birdViewModel);
         Task<IBaseResponse<bool>> DeleteBird(int id);
-        Task<IBaseResponse<Bird>> GetBird(int id);
+        Task<IBaseResponse<BirdViewModel>> GetBird(int id);
         Task<IBaseResponse<Bird>> GetBirdByName(string name);
         Task<IBaseResponse<Bird>> Edit(int id, BirdViewModel model);
 
