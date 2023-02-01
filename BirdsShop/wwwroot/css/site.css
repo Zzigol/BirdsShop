@@ -4,6 +4,12 @@
     --color_mango: #ffc13b;
     --color_red-orange: #ff6e40;
 }
+header,
+footer,
+section {
+    padding: 100px 0;
+}
+
 html {
   font-size: 14px;
 }
@@ -22,19 +28,42 @@ html {
   position: relative;
   min-height: 100%;
 }
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    display: table-row;
+    height: 100%;
+}
 
 body {
-    margin-bottom: 60px;
     line-height: 1.5;
     font-family: 'Poppins', sans-serif;
     background-color: var(--color_almond);
+    height: 100%;    
 }
 /*header*/
 header {
     padding: 10px 10px 10px 10px;
-    background: var(--color_flot);       
+    background: var(--color_flot);  
 }
 
+.oneTwo{
+    margin-bottom:5%;
+}
 /*footer*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -60,19 +89,20 @@ ul {
 
 .footer {
     background-color: var(--color_flot);
-    padding: 50px 0;
+    padding: 10px 0 10px 0;    
+    margin-bottom: 0%;
 }
 
 .footer-col {
     width: 25%;
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
     .footer-col h4 {
         font-size: 18px;
         color: var(--color_red-orange);
         text-transform: capitalize;
-        margin-bottom: 35px;
+        margin-bottom: 5%;
         font-weight: 500;
         position: relative;
     }
@@ -89,7 +119,7 @@ ul {
         }
 
     .footer-col ul li:not(:last-child) {
-        margin-bottom: 10px;
+        margin-bottom: 5%;
     }
 
     .footer-col ul li a {
@@ -103,19 +133,19 @@ ul {
         transition: all 0.3s ease;
     }
 
-        .footer-col ul li a:hover {
-            color: var(--color_mango);
-            padding-left: 8px;
-        }
+.footer-col ul li a:hover {
+    color: var(--color_mango);
+    padding-left: 8px;
+    }
 
     .footer-col .social-links a {
         display: inline-block;
-        height: 40px;
-        width: 40px;
+        height: 20px;
+        width: 20px;
         background-color: rgba(255,255,255,0.2);
         margin: 0 10px 10px 0;
         text-align: center;
-        line-height: 40px;
+        line-height: 10px;
         border-radius: 50%;
         color: #ffffff;
         transition: all 0.5s ease;
@@ -130,7 +160,7 @@ ul {
 @media(max-width: 767px) {
     .footer-col {
         width: 50%;
-        margin-bottom: 30px;
+        margin-bottom: 5%;
     }
 }
 

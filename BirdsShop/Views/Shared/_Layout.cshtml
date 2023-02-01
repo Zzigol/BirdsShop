@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/BirdsShop.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <div class="wrapper">
     <header>
         <nav class="navbar navbar-expand-lg" style="background-color: white;">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index"><span style="color:black; font-size:30px; background-color:white; border-radius:10px;">BirdShop</span>@*<img src="~/Img/LSKIcon.jpg" style="width:30px; height: 30px; border-radius: 10px;">*@</a>
@@ -109,11 +110,15 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    
+
+    <section class="content">
+    <div class="container  px-4 oneTwo">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -122,28 +127,21 @@
                     <h4>company</h4>
                     <ul>
                         <li><a href="#">about us</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
+                        <li><a href="#">our services</a></li>                        
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>get help</h4>
                     <ul>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">shipping</a></li>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">order status</a></li>
-                        <li><a href="#">payment options</a></li>
+                        <li><a href="#">shipping</a></li>                        
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>online shop</h4>
                     <ul>
                         <li><a href="#">watch</a></li>
-                        <li><a href="#">bag</a></li>
-                        <li><a href="#">shoes</a></li>
-                        <li><a href="#">dress</a></li>
+                        <li><a href="#">bag</a></li>                        
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -158,9 +156,11 @@
             </div>
         </div>
     </footer>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("pageScripts", required: false)
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
