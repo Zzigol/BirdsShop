@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BirdsShop.DAL.Repozitories
 {
-    public class BirdRepository : IBirdRepository
+    public class BirdRepository : IBaseRepository<Bird>
     {
         private readonly ApplicationDbContext _db;
 
@@ -18,39 +18,26 @@ namespace BirdsShop.DAL.Repozitories
             _db = db;
         }
 
-        public async Task<bool> Create(Bird entity)
+        public async Task Create(Bird entity)
         {
-            _db.Bird.AddAsync(entity);
-            await _db.SaveChangesAsync();
-            return true;
+            await _db.Birds.AddAsync(entity);
+            await _db.SaveChangesAsync();            
         }
 
-        //public async Task<bool> Create2(Bird[] Birds)
-        //{
-        //    foreach(var bird in Birds) 
-        //    {
-        //        _db.Bird.AddAsync(bird);
-        //    }            
-        //    await _db.SaveChangesAsync();
-        //    return true;
-        //}
-
-        public async Task<bool> Delete(Bird entity)
+        public async Task Delete(Bird entity)
         {
-            _db.Bird.Remove(entity);
+            _db.Birds.Remove(entity);
             await _db.SaveChangesAsync();
-            return true;
         }
 
-        public async Task<Bird> Get(int id) => await _db.Bird.FirstOrDefaultAsync(x => x.Id == id);
-
-        public async Task<Bird> GetByName(string name) => await _db.Bird.FirstOrDefaultAsync( x => x.Name == name);
-        
-        public async Task<List<Bird>> Select() => await _db.Bird.ToListAsync();
+        public IQueryable<Bird> GetAll()
+        {
+            return _db.Birds;
+        }
 
         public async Task<Bird> Update(Bird entity)
         {
-            _db.Bird.Update(entity);
+            _db.Birds.Update(entity);
             await _db.SaveChangesAsync();  
             return entity;
         }

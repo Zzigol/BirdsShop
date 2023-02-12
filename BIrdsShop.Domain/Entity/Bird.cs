@@ -22,6 +22,8 @@ namespace BirdsShop.Domain.Entity
         public DateTime DataCreate { get; set; }
 
         public SpeciesBirds Species { get; set; } //Вид
+
+        public byte[]? Avatar { get; set; }
     }
     
 }

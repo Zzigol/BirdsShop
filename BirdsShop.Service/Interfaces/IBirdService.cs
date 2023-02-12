@@ -12,9 +12,11 @@ namespace BirdsShop.Service.Interfaces
     public interface IBirdService
     {
         Task<IBaseResponse<IEnumerable<Bird>>> GetBirds();
-        Task<IBaseResponse<BirdViewModel>> CreateBird(BirdViewModel birdViewModel);
-        Task<IBaseResponse<bool>> DeleteBird(int id);
         Task<IBaseResponse<BirdViewModel>> GetBird(int id);
+        Task<IBaseResponse<Bird>> Create(BirdViewModel bird, byte[] imageData);
+        
+        Task<IBaseResponse<bool>> DeleteBird(int id);
+        
         Task<IBaseResponse<Bird>> GetBirdByName(string name);
         Task<IBaseResponse<Bird>> Edit(int id, BirdViewModel model);
 

@@ -1,9 +1,105 @@
-﻿
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["Title"] = "Главная";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="padding: 10px;"></div>
+<div class="card col-md-12">
+    <div class="card-body">
+        <h5 class="card-title text-center">Добро пожаловать на сайт BirdsShop</h5>
+        <p class="card-text">
+            На этом сайте вы сможете выбрать подходящего для вас попугая, посмотреть его особенности, сравнить
+            с другими птицами, а так же можете приобрести его
+        </p>
+        <p class="card-text"><small class="text-muted">BirdsShop</small></p>
+    </div>
 </div>
+
+<div style="padding: 10px;"></div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://images.wallpaperscraft.ru/image/single/mashina_noch_dozhd_143166_1280x720.jpg" class="card-img-top" />
+                <div class="card-body text-center">
+                    <h5 class="card-title">Мелкие попугаи</h5>
+                    <p class="card-text">Маленькие попугаи завоевали сердца любителей пернатых веселым нравом, любознательностью, непоседливостью и позитивом, которые они дарят своим владельцам. Это юркие, умные, очень красивые создания, способные создать в доме удивительную атмосферу любви и жизнелюбия.</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Bird" asp-action="Save" asp-route-id="0" class="card-link">Приобретение</a>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="col">
+        <div class="card h-100">
+            <img src="https://images.wallpaperscraft.ru/image/single/bmw_fary_avtomobil_124112_1280x720.jpg" class="card-img-top" />
+            <div class="card-body text-center">
+                <h5 class="card-title">Средние</h5>
+                <p class="card-text">
+                    В большинстве своем, домашние попугаи средних размеров также не особо привередливы к условиям содержания. Вот только клетки для них должны быть гораздо больше, чем для маленьких видов. Часто для таких птиц в квартире оборудуют вольер, чтобы обеспечить им достаточное пространство для жизни.</p>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Bird" asp-action="GetBirds" class="card-link">Список птиц</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="https://images.wallpaperscraft.ru/image/single/audi_avtomobil_vid_speredi_130942_1280x720.jpg" class="card-img-top" />
+            <div class="card-body text-center">
+                <h5 class="card-title">Крупные</h5>
+                <p class="card-text">Представители крупных пород домашних попугаев по уровню интеллекта нередко сравнивают с 3-5-летними детьми. Они умны, артистичны, способны выучить и воспроизводить множество слов и фраз. Причем часто создается впечатление, что они не просто имитируют человеческую речь, бездумно произнося слова, а понимают их смысл и вставляют реплики в нужный момент.</p>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Bird" asp-action="" class="card-link">Сравнение</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 10px;"></div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Основные виды</h5>
+        <p class="card-text">
+            Домашние попугаи занимают четвертое место в мире по популярности среди любителей домашних питомцев. Для большинства владельцев они становятся полноправными членами семьи. С ними всегда интересно, они красивы, жизнерадостны, общительны. Тонко чувствуют настроение хозяев, некоторые разновидности даже способны поддерживать разговор.
+        </p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+
+<div style="padding: 10px;"></div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">На планете живут свыше 350 видов попугаеобразных. Большинство из них отлично подходят для домашнего содержания
+</h5>
+    </div>
+    <ul class="list-group list-group-flush" id="ulListId">
+        <li class="list-group-item">Волнистый - самый популярный вид домашних попугаев.</li>
+        <li class="list-group-item">Воробьиные - одни из самых мелких попугайчиков</li>
+        <li class="list-group-item">Каики — забавные пернатые, которые перемещаются оригинальными прыжками.</li>
+        <li class="list-group-item">Лори — интеллектуально развитые птицы, ласковые, чрезвычайно игривые, легко приручаемые.</li>
+        <li class="list-group-item">Амазоны — одни из тех крупных питомцев, которых могут содержать начинающие владельцы.</li>
+        <li class="list-group-item">Ара - шикарные птицы, к которым обычно применяют превосходящие эпитеты: самые редкие, самые крупные, самые дорогие попугаи в мире.</li>
+        <li class="list-group-item">Какаду - обладатели самых мощных клювов и выразительных хохолков, которые являются индикаторами настроения.</li>        
+    </ul>
+    <div class="card-body">
+        <button class="btn btn-danger" id="btnHideId">Скрыть</button>
+        <button class="btn btn-primary" id="btnShowId">Показать</button>
+    </div>
+</div>
+
+@section pageScripts
+    {
+    <script>
+        $('#btnHideId').click(function () {
+            $('#ulListId').hide(2000);
+        });
+
+        $('#btnShowId').click(function () {
+            $('#ulListId').show(2000);
+        });
+    </script>
+}

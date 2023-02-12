@@ -27,7 +27,7 @@ namespace BirdsShop.Controllers
             {
                 return View(response.Data.ToList()) ;
             }
-            return RedirectToAction("Error");
+            return View("Error", $"{response.Description}");
         }
         
 
@@ -39,7 +39,7 @@ namespace BirdsShop.Controllers
             {
                 return View(response.Data);
             }
-            return RedirectToAction("Error");
+            return View("Error", $"{response.Description}");
         }
 
         [Authorize (Roles ="Admin")]
@@ -50,7 +50,7 @@ namespace BirdsShop.Controllers
             {
                 return RedirectToAction("GetBirds");
             }
-            return RedirectToAction("Error");
+            return View("Error", $"{response.Description}");
         }
 
         [HttpGet]
@@ -66,7 +66,7 @@ namespace BirdsShop.Controllers
             {
                 return View(response.Data);
             }
-            return RedirectToAction("Error");
+            return View("Error", $"{response.Description}");
         }
 
         [HttpPost]
@@ -75,16 +75,21 @@ namespace BirdsShop.Controllers
         {
             if (ModelState.IsValid) 
             { 
-                if (model.Id == 0) 
-                { 
-                    await birdService.CreateBird(model);                
+                if (model.Id == 0)
+                {
+                    byte[] imageData;
+                    using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
+                    }
+                    await birdService.Create(model, imageData);                
                 }
                 else 
                 {
                     await birdService.Edit(model.Id, model);
                 }
             }
-            return RedirectToAction("GetBirds");
+            return View();
         }
     }
     
