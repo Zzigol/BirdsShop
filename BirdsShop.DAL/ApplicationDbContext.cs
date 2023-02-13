@@ -16,7 +16,7 @@ namespace BirdsShop.DAL
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
             //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
         public DbSet<Bird> Birds { get; set; } = null!;
     
@@ -24,8 +24,10 @@ namespace BirdsShop.DAL
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>(builder =>
+
+            modelBuilder.Entity<User>(builder =>
         {
+            builder.ToTable("Users").HasKey(x=>x.Id);
             builder.HasData(new User
             {
                 Id = 1,
@@ -34,13 +36,14 @@ namespace BirdsShop.DAL
                 Role = Role.Admin
             });
 
-            builder.ToTable("Users").HasKey(x => x.Id);
+
 
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd();
 
             builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
         });
+
+        }
     }
-}
 }
