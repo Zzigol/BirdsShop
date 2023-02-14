@@ -36,10 +36,9 @@ namespace BirdsShop.DAL
                 Role = Role.Admin
             });
 
+            builder.Property(x => x.Password).IsRequired();
 
-
-            builder.Property(x => x.Id)
-                .ValueGeneratedOnAdd();
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
         });

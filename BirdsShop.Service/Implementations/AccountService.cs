@@ -21,9 +21,9 @@ namespace BirdsShop.Service.Implementations
     public class AccountService : IAccountService
     {
         private readonly IBaseRepository<User> _userRepository;
-        private Logger<AccountService> _logger;
+        private readonly Logger<IAccountService> _logger;
 
-        public AccountService(IBaseRepository<User> userRepository, Logger<AccountService> logger)
+        public AccountService(IBaseRepository<User> userRepository, Logger<IAccountService> logger)
         {
             _logger = logger;
             _userRepository = userRepository;
