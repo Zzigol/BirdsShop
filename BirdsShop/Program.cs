@@ -23,10 +23,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IBaseRepository<Bird>,BirdRepository>();
-builder.Services.AddTransient<IBaseRepository<User>, UserRepository>();
-builder.Services.AddTransient<IBirdService, BirdService>();
-builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddHttpClient<IBaseRepository<Bird>,BirdRepository>();
+builder.Services.AddHttpClient<IBaseRepository<User>, UserRepository>();
+builder.Services.AddHttpClient<IBirdService, BirdService>();
+builder.Services.AddHttpClient<IAccountService, AccountService>();
 
 
 var app = builder.Build();
